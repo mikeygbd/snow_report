@@ -1,6 +1,3 @@
-require "snow_report/version"
-
-module SnowReport
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./snow_report/version"
+require_relative './snow_report/report'
+require_relative './snow_report/cli'
