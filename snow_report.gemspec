@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{this is a command line tool to help keep track of snow reports}
   spec.description   = %q{this is a command line tool to help keep track of snow reports and is very cool!}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/mikeygbd/snow_report"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
 
     spec.metadata["homepage_uri"] = spec.homepage
     spec.metadata["source_code_uri"] = "https://github.com/mikeygbd/snow_report"
-    spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+    spec.metadata["changelog_uri"] = "https://github.com/mikeygbd/snow_report"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
@@ -39,6 +39,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 10.0"
   # spec.add_development_dependency "rspec"
-  # spec.add_development_dependency "pry"
-  # spec.add_dependency "nokogiri"
+  spec.add_development_dependency "pry"
+  spec.add_dependency "nokogiri"
 end
