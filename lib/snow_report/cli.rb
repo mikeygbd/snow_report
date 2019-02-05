@@ -1,8 +1,9 @@
 #CLI Controller
 class SnowReport::CLI
+  # attr_accessor :reports
 
   def call
-    puts "Today's Snow Reports:"
+    # puts "Today's Snow Reports:"
     list_reports
     menu
     goodbye
@@ -10,7 +11,10 @@ class SnowReport::CLI
 
   def list_reports
     puts "Today's Snow Reports:"
-    @report = SnowReport::Report.today
+    @reports = SnowReport::Report.today
+    @reports.each_with_index do |report, i|
+      puts "#{i + 1}. #{report.name} - #{report.temp} - #{report.trails}"
+    end
   end
 
   def menu
@@ -19,7 +23,8 @@ class SnowReport::CLI
       puts "Enter the number of the mountain you would like a report on or type list/exit:"
       input = gets.strip
       if input.to_i > 0
-        puts @report[input.to_i-1]
+        the_report = @reports[input.to_i-1]
+        puts "#{the_report.name} - #{the_report.temp} - #{the_report.trails}"
       elsif input == "list"
         list_reports
       else
