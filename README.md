@@ -4,7 +4,7 @@ hello world
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/snow_report`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-This gem will pull snow reports from multiple mountains.
+This gem will pull snow reports from multiple resorts in the US and display in the CLI. It will list all resorts or according to the state in which you choose.
 
 ## Installation
 
@@ -24,7 +24,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Type the below and follow the on screen prompts.
+$ snow-report
 
 ## Development
 
