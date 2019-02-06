@@ -10,7 +10,7 @@ class SnowReport::CLI
     menu
     # goodbye
   end
-
+  #how do i build a search by resort method where the user can enter the resort and the report comes up.
   #how do i go down another level and ask the user for the state he would liek to see all the reports in.
   def list_by_location
 
@@ -22,7 +22,8 @@ class SnowReport::CLI
     puts "Enter a state to get a list of all the resorts in your state:"
     input = gets.strip.downcase
     @reports = SnowReport::Report.today
-    @reports.each_with_index do |report, i|
+    sorted_reports = @reports.sort_by {|report| report.name}
+    sorted_reports.each_with_index do |report, i|
       if report.location.downcase == input
       puts "#{i + 1}. #{report.name}"
     elsif input == "list"
@@ -35,7 +36,8 @@ class SnowReport::CLI
   def list_reports
     puts "Today's Snow Reports:"
     @reports = SnowReport::Report.today
-    @reports.each_with_index do |report, i|
+    sorted_reports = @reports.sort_by {|report| report.name}
+    sorted_reports.each_with_index do |report, i|
       puts "#{i + 1}. #{report.name}"
     end
   end
@@ -43,7 +45,7 @@ class SnowReport::CLI
     def menu
       input = nil
       while input != "exit"
-        puts "Enter the number of the resort you would like a report on or type list/exit:"
+        puts "Enter the number of the resort you would like a report on or type list or exit:"
         input = gets.strip
         if input.to_i > 0
           the_report = @reports[input.to_i-1]
