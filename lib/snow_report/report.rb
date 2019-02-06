@@ -93,17 +93,17 @@ attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :status, :url
 
   def self.scrape_mountaincreek
     doc = Nokogiri::HTML(open("https://www.onthesnow.com/new-jersey/mountain-creek-resort/skireport.html"))
-    # report = self.new
+    report = self.new
     report.name = doc.search(".resort_name").text
     report.status = doc.search(".current_status").text
     report.trails = doc.search("#resort_terrain p.open").first.text
     report.lifts = doc.search("#resort_terrain p.open")[1].text
-    report.temp = doc.search(".temp.above").first.text
+    report.temp = doc.search(".temp.below").first.text
     report.new_snow = doc.search(".predicted_snowfall")[6].text
     report.parks = doc.search("#resort_terrain p.value")[3].text
 
-    binding.pry
-      # report
+    # binding.pry
+      report
   end
 
   def self.scrape_jaypeak
@@ -130,7 +130,7 @@ attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :status, :url
     lifts = doc.search("#resort_terrain p.open")[1].text
     temp = doc.search(".temp.above").first.text
     new_snow = doc.search(".predicted_snowfall")[6].text
-    parks = doc.search("#resort_terrain p.value")[3].text
+    # parks = doc.search("#resort_terrain p.value")[3].text -- no parks at stowe
     report
     # binding.pry
   end
