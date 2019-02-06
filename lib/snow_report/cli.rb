@@ -58,8 +58,8 @@ class SnowReport::CLI
   puts "Enter a state to get a list of all the resorts in your state:"
   input = gets.strip.downcase
   @reports = SnowReport::Report.today
-  sorted_reports = @reports.sort_by {|report| report.name}
-  sorted_reports.each_with_index do |report, i|
+  # sorted_reports = @reports.sort_by {|report| report.name}
+  @reports.each_with_index do |report, i|
     if report.location.downcase == input
     puts "#{i + 1}. #{report.name}"
   elsif input == "list"
@@ -72,8 +72,8 @@ end
   def list_reports
     puts "Today's Snow Reports:"
     @reports = SnowReport::Report.today
-    sorted_reports = @reports.sort_by {|report| report.name}
-    sorted_reports.each_with_index do |report, i|
+    # sorted_reports = @reports.sort_by {|report| report.name}
+    @reports.each_with_index do |report, i|
       puts "#{i + 1}. #{report.name}"
     end
   end

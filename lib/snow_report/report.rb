@@ -18,8 +18,9 @@ attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :status, :url, :
 
   def self.scrape_reports
     reports = []
-    reports << self.scrape_attitash
+
     reports << self.scrape_bear
+    reports << self.scrape_attitash
     reports << self.scrape_belleayre
     reports << self.scrape_bigboulder
     reports << self.scrape_bigsky
@@ -47,7 +48,8 @@ attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :status, :url, :
     reports << self.scrape_whiteface
     reports << self.scrape_whitefish
     reports << self.scrape_windham
-    reports
+    sorted_reports = reports.sort_by {|report| report.name}
+    sorted_reports
   end
 
 
