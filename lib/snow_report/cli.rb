@@ -3,9 +3,33 @@ class SnowReport::CLI
 
 
   def call
-    list_reports
+    puts ""
+    puts "Welcome to Snow Report!"
+    list_by_location
+    # list_reports
     menu
     # goodbye
+  end
+
+  #how do i go down another level and ask the user for the state he would liek to see all the reports in.
+  def list_by_location
+
+    puts ""
+    puts "Type list to see all of the resorts"
+    puts ""
+    puts "or"
+    puts ""
+    puts "Enter a state to get a list of all the resorts in your state:"
+    input = gets.strip.downcase
+    @reports = SnowReport::Report.today
+    @reports.each_with_index do |report, i|
+      if report.location.downcase == input
+      puts "#{i + 1}. #{report.name}"
+    elsif input == "list"
+      list_reports
+      break
+      end
+    end
   end
 
   def list_reports
@@ -19,7 +43,7 @@ class SnowReport::CLI
     def menu
       input = nil
       while input != "exit"
-        puts "Enter the number of the mountain you would like a report on or type list/exit:"
+        puts "Enter the number of the resort you would like a report on or type list/exit:"
         input = gets.strip
         if input.to_i > 0
           the_report = @reports[input.to_i-1]
