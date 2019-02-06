@@ -263,7 +263,7 @@ attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :status, :url, :
     report.lifts = doc.search("#resort_terrain p.open")[1].text
     report.temp = doc.search(".temp").first.text
     report.new_snow = doc.search(".predicted_snowfall")[6].text
-    report.parks = doc.search("#resort_terrain p.value")[3].text
+    report.parks = doc.search("#resort_terrain p.value")[4].text
     # report.url = doc.search(".resort_name a").attr("href").value
     report.description = doc.search(".snow_report_comment_wrapper").text
     report

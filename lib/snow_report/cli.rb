@@ -56,9 +56,9 @@ class SnowReport::CLI
   puts "or"
   puts ""
   puts "Enter a state to get a list of all the resorts in your state:"
+  puts ""
   input = gets.strip.downcase
   @reports = SnowReport::Report.today
-  # sorted_reports = @reports.sort_by {|report| report.name}
   @reports.each_with_index do |report, i|
     if report.location.downcase == input
     puts "#{i + 1}. #{report.name}"
@@ -72,7 +72,6 @@ end
   def list_reports
     puts "Today's Snow Reports:"
     @reports = SnowReport::Report.today
-    # sorted_reports = @reports.sort_by {|report| report.name}
     @reports.each_with_index do |report, i|
       puts "#{i + 1}. #{report.name}"
     end
@@ -82,7 +81,7 @@ end
       input = nil
       while input != "exit"
         puts "Enter the number of the resort you would like a report on or type list or exit:"
-        input = gets.strip
+        input = gets.strip.downcase
         if input.to_i > 0
           the_report = @reports[input.to_i-1]
           puts "-----------#{the_report.name}, #{the_report.location}------------"
@@ -109,8 +108,6 @@ end
           puts ""
         elsif input == "list"
           list_reports
-        # elsif input == "#{the_report.name}"
-        #   find_by_name(input)
         elsif input == "exit"
           puts ""
           puts "See you tomorrow for more reports!!!"
