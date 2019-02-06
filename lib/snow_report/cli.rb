@@ -1,6 +1,6 @@
 #CLI Controller
 class SnowReport::CLI
-  # attr_accessor :reports
+  attr_accessor :reports
 
   def call
     # puts "Today's Snow Reports:"
