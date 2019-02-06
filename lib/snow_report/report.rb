@@ -51,11 +51,18 @@ attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :url
     parks = doc.search(".value")[17].text
     url = "https://www.mountsnow.com/ski-ride/snow-report/"
 
-    binding.pry
+    # binding.pry
   end
 
   def self.scrape_stratton
     doc = Nokogiri::HTML(open("https://www.onthesnow.com/vermont/stratton-mountain/skireport.html"))
+    trails = doc.search("#resort_terrain p.open").first.text
+    lifts = doc.search("#resort_terrain p.open")[1].text
+    temp = doc.search(".temp.above").first.text
+    new_snow = doc.search(".predicted_snowfall")[6].text
+    parks = doc.search("#resort_terrain p.value")[3].text
+    url = "https://www.onthesnow.com/vermont/stratton-mountain/skireport.html"
+
 
     binding.pry
   end
