@@ -1,9 +1,8 @@
 #CLI Controller
 class SnowReport::CLI
-  attr_accessor :reports
+  attr_accessor  :name, :temp, :trails
 
   def call
-    # puts "Today's Snow Reports:"
     list_reports
     menu
     goodbye
