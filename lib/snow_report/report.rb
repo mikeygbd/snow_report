@@ -44,6 +44,7 @@ attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :url
   #
   def self.scrape_mountsnow
     doc = Nokogiri::HTML(open("https://www.mountsnow.com/ski-ride/snow-report/"))
+    name = "Mount Snow"
     trails = doc.search(".value").first.text
     lifts = doc.search(".value")[1].text
     temp = doc.search(".value")[9].text
@@ -55,17 +56,19 @@ attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :url
 
   def self.scrape_stratton
     doc = Nokogiri::HTML(open("https://www.onthesnow.com/vermont/stratton-mountain/skireport.html"))
+    name = doc.search(".resort_name").text
     trails = doc.search("#resort_terrain p.open").first.text
     lifts = doc.search("#resort_terrain p.open")[1].text
     temp = doc.search(".temp.above").first.text
     new_snow = doc.search(".predicted_snowfall")[6].text
     parks = doc.search("#resort_terrain p.value")[3].text
     url = "https://www.onthesnow.com/vermont/stratton-mountain/skireport.html"
-    # binding.pry
+    binding.pry
   end
 
   def self.scrape_hunter
     doc = Nokogiri::HTML(open("https://www.onthesnow.com/new-york/hunter-mountain/skireport.html"))
+    name = doc.search(".resort_name").text
     trails = doc.search("#resort_terrain p.open").first.text
     lifts = doc.search("#resort_terrain p.open")[1].text
     temp = doc.search(".temp.above").first.text
@@ -76,6 +79,7 @@ attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :url
 
   def self.scrape_mountaincreek
     doc = Nokogiri::HTML(open("https://www.onthesnow.com/new-jersey/mountain-creek-resort/skireport.html"))
+    name = doc.search(".resort_name").text
     trails = doc.search("#resort_terrain p.open").first.text
     lifts = doc.search("#resort_terrain p.open")[1].text
     temp = doc.search(".temp.above").first.text
@@ -86,6 +90,7 @@ attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :url
 
   def self.scrape_jaypeak
     doc = Nokogiri::HTML(open("https://www.onthesnow.com/vermont/jay-peak/skireport.html"))
+    name = doc.search(".resort_name").text
     trails = doc.search("#resort_terrain p.open").first.text
     lifts = doc.search("#resort_terrain p.open")[1].text
     temp = doc.search(".temp.above").first.text
@@ -96,6 +101,7 @@ attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :url
 
   def self.scrape_stowe
     doc = Nokogiri::HTML(open("https://www.onthesnow.com/vermont/stowe-mountain-resort/skireport.html"))
+    name = doc.search(".resort_name").text
     trails = doc.search("#resort_terrain p.open").first.text
     lifts = doc.search("#resort_terrain p.open")[1].text
     temp = doc.search(".temp.above").first.text
@@ -103,3 +109,5 @@ attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :url
     parks = doc.search("#resort_terrain p.value")[3].text
     # binding.pry
   end
+
+end
