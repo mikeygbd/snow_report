@@ -1,6 +1,6 @@
 
 class SnowReport::Report
-attr_accessor :name, :temp, :lifts, :trails, :url
+attr_accessor :name, :temp, :lifts, :trails, :new_snow, :parks, :url
   def self.today
     #scrape snow report sites
   self.scrape_reports
@@ -44,9 +44,13 @@ attr_accessor :name, :temp, :lifts, :trails, :url
   #
   def self.scrape_mountsnow
     doc = Nokogiri::HTML(open("https://www.mountsnow.com/ski-ride/snow-report/"))
-    trails = doc.search(".value")[1].text
+    trails = doc.search(".value").first.text
     lifts = doc.search(".value")[1].text
     temp = doc.search(".value")[9].text
+    new_snow = doc.search(".value")[4].text
+    parks = doc.search(".value")[17].text
+    url = "https://www.mountsnow.com/ski-ride/snow-report/"
+
     binding.pry
   end
 
