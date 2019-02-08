@@ -2,4 +2,4 @@
 
 require './lib/snow_report'
 
-SnowReport::CLI.new.call
+CLI.new.call
